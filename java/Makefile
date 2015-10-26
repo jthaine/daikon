@@ -827,6 +827,7 @@ JAVAC_VINDEX_ARGS = -processor org.checkerframework.common.subtyping.SubtypingCh
 JAVAC_REGEX_ARGS = -processor org.checkerframework.checker.regex.RegexChecker -implicit:class -Xlint:-processing -AskipDefs='${ALLSYSTEMS_SKIPDEFS}'
 JAVAC_REGEX_QUAL_ARGS = -processor org.checkerframework.checker.experimental.regex_qual.RegexCheckerAdapter -implicit:class -Xlint:-processing -AskipDefs='${ALLSYSTEMS_SKIPDEFS}'
 JAVAC_FORMATTER_ARGS = -processor org.checkerframework.checker.formatter.FormatterChecker -implicit:class -Xlint:-processing -AskipDefs='${ALLSYSTEMS_SKIPDEFS}'
+JAVAC_LOCK_ARGS = -processor org.checkerframework.checker.lock.LockChecker -implicit:class -Xlint:-processing -AskipDefs='${ALLSYSTEMS_SKIPDEFS}'
 JAVAC_JAVARI_ARGS = -processor org.checkerframework.checker.javari.JavariChecker -implicit:class -Xlint:-processing -AskipDefs='${ALLSYSTEMS_SKIPDEFS}'
 JAVAC_IGJ_ARGS = -processor org.checkerframework.checker.igj.IGJChecker -implicit:class -Xlint:-processing -AskipDefs='${ALLSYSTEMS_SKIPDEFS}'
 ## Code in dcomp directory is not called directly; annotations would be useless.
@@ -987,6 +988,10 @@ check-regex-qual: ${ALL_GENERATED_FILES} compile
 check-formatter: ${ALL_GENERATED_FILES} compile
 	@echo ${JAVAC_COMMAND_FOR_CHECKER} ${JAVAC_FORMATTER_ARGS} ${CHECKER_ARGS} ...
 	@${JAVAC_COMMAND_FOR_CHECKER} ${JAVAC_FORMATTER_ARGS} ${CHECKER_ARGS} ${JAVA_FILES}
+
+check-lock: ${ALL_GENERATED_FILES} compile
+	@echo ${JAVAC_COMMAND_FOR_CHECKER} ${JAVAC_LOCK_ARGS} ${CHECKER_ARGS} ...
+	@${JAVAC_COMMAND_FOR_CHECKER} ${JAVAC_LOCK_ARGS} ${CHECKER_ARGS} ${JAVA_FILES}
 
 check-igj-all-nostubs: ${ALL_GENERATED_FILES} compile
 	@echo ${JAVAC_COMMAND_FOR_CHECKER} ${JAVAC_IGJ_ARGS} ${CHECKER_ARGS} ...
